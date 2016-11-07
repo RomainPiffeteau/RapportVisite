@@ -3,7 +3,7 @@ package sio2.rapportvisite;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Main extends AppCompatActivity {
+public class Controller extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
