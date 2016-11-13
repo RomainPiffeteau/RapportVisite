@@ -1,13 +1,14 @@
 package sio2.rapportvisite;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import sio2.rapportvisite.data.Persistence;
 
-public class Controller extends AppCompatActivity {
+public class Controller {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public Controller() {
+        try {
+            Persistence.refreshDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
