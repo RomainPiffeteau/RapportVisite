@@ -3,33 +3,23 @@ package sio2.rapportvisite.model;
 import java.util.ArrayList;
 
 public class Visit {
-    private int id;
     private int idVisitor;
-    private int idLastVisitor;
     private int idPractitioner;
     private String date;
     private String previousDate;
-    private String visitComments;
+    private String comment;
+    private ArrayList<Product> visitProducts;
 
-    public static ArrayList<Visit> allVisits = new ArrayList<>();
+    public static ArrayList<Visit> allVisits;
+    public static void reset(){ allVisits = new ArrayList<>(); }
 
-    public Visit(String visitComments, int id, int idVisitor, int idLastVisitor, int idPractitioner, String date, String previousDate) {
-        this.visitComments = visitComments;
-        this.id = id;
+    public Visit(int idVisitor, int idPractitioner, String date, String previousDate, String comment) {
         this.idVisitor = idVisitor;
-        this.idLastVisitor = idLastVisitor;
         this.idPractitioner = idPractitioner;
         this.date = date;
         this.previousDate = previousDate;
-        allVisits.add(this);
-    }
-
-    public int getIdVisitor(){
-        return this.idVisitor;
-    }
-
-    public int getIdLastVisitor() {
-        return idLastVisitor;
+        this.comment = comment;
+        visitProducts = new ArrayList<>();
     }
 
     public int getIdPractitioner() {
@@ -44,7 +34,19 @@ public class Visit {
         return previousDate;
     }
 
-    public String getVisitComments() {
-        return visitComments;
+    public String getComment() {
+        return comment;
+    }
+
+    public ArrayList<Product> getVisitProducts() {
+        return visitProducts;
+    }
+
+    public Visit getVisit(int idPractitioner, int idVisitor){
+        for(Visit v : allVisits){
+            if(v.idPractitioner == idPractitioner && v.idVisitor == idVisitor)
+                return v;
+        }
+        return null;
     }
 }

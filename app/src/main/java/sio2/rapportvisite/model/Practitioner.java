@@ -8,9 +8,10 @@ public class Practitioner {
     private String firstName;
     private String sector;
     private String activity;
-    private String activityPrecisions = "";
+    private String activityPrecisions;
 
-    public static ArrayList<Practitioner> allPractitioners = new ArrayList<>();
+    public static ArrayList<Practitioner> allPractitioners;
+    public static void reset(){ allPractitioners = new ArrayList<>(); }
 
     public Practitioner(int id, String name, String firstName, String sector, String activity, String activityPrecisions){
         this.id = id;
@@ -22,40 +23,31 @@ public class Practitioner {
         allPractitioners.add(this);
     }
 
-    public String getNameFromId(int id){
-        for(Practitioner prac : allPractitioners){
-            if(prac.id == id)
-                return prac.name;
-        }
-        return "NameNoSuchId";
+    public String getName() {
+        return name;
     }
 
-    public String getFirstNameFromId(int id){
-        for(Practitioner prac : allPractitioners){
-            if(prac.id == id)
-                return prac.firstName;
-        }
-        return "FirstNameNoSuchId";
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getSectorFromId(int id){
-        for(Practitioner prac : allPractitioners){
-            if(prac.id == id)
-                return prac.sector;
-        }
-        return "SectorNoSuchId";
+    public String getSector() {
+        return sector;
     }
 
-    public String[] getActivityFromId(int id){
-        String[] found = new String[2];
-        found[0] = "-1";
-        found[1] = "ActivityPrecisionsNoSuchId";
-        for(Practitioner prac : allPractitioners){
-            if(prac.id == id){
-                found[0] = String.valueOf(prac.id);
-                found[1] = prac.activityPrecisions;
-            }
+    public String getActivity() {
+        return activity;
+    }
+
+    public String getActivityPrecisions() {
+        return activityPrecisions;
+    }
+
+    public Practitioner getPractictionner(int id){
+        for(Practitioner p : allPractitioners){
+            if(p.id == id)
+                return p;
         }
-        return found;
+        return null;
     }
 }

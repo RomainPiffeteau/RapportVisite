@@ -3,85 +3,65 @@ package sio2.rapportvisite.model;
 import java.util.ArrayList;
 
 public class PractitionerKnowingProduct {
-    private int idVisit;
-    private int idProduct;
     private int idPractitioner;
+    private int idProduct;
     private boolean knowing;
-    private int prescriptionPercent;
-    private String precisionsLess25Percent = "";
-    private String precisionsMore75Percent = "";
+    private int presc;
+    private String presc25 = "";
+    private String presc75 = "";
     private int[] instructions;
     private String instructionsComment = "";
     private String productComment = "";
 
-    public static ArrayList<PractitionerKnowingProduct> allPractitionerKnowingProduct = new ArrayList<>();
+    public static ArrayList<PractitionerKnowingProduct> allPractitionerKnowingProduct;
+    public static void reset(){ allPractitionerKnowingProduct = new ArrayList<>(); }
 
-    public PractitionerKnowingProduct(int idVisit, int idProduct, int idPractitioner, boolean knowing, int prescriptionPercent, String precisionsLess25Percent, String precisionsMore75Percent, int[] instructions, String instructionsComment, String productComment) {
-        this.idVisit = idVisit;
-        this.idProduct = idProduct;
+    public PractitionerKnowingProduct(int idPractitioner, int idProduct, boolean knowing, int presc, String presc75, int[] instructions, String instructionsComment, String productComment, String presc25) {
         this.idPractitioner = idPractitioner;
+        this.idProduct = idProduct;
         this.knowing = knowing;
-        this.prescriptionPercent = prescriptionPercent;
-        this.precisionsLess25Percent = precisionsLess25Percent;
-        this.precisionsMore75Percent = precisionsMore75Percent;
+        this.presc = presc;
+        this.presc75 = presc75;
         this.instructions = instructions;
         this.instructionsComment = instructionsComment;
         this.productComment = productComment;
+        this.presc25 = presc25;
         allPractitionerKnowingProduct.add(this);
     }
 
-    public boolean getKnowing(int idVisit){
-        for(PractitionerKnowingProduct pkp : allPractitionerKnowingProduct){
-            if(pkp.idVisit == idVisit)
-                return pkp.knowing;
-        }
-        return false;
+    public boolean isKnowing() {
+        return knowing;
     }
 
-    public int getPrescriptionPercent(int idVisit){
-        for(PractitionerKnowingProduct pkp : allPractitionerKnowingProduct){
-            if(pkp.idVisit == idVisit)
-                return pkp.prescriptionPercent;
-        }
-        return -1;
+    public int getPresc() {
+        return presc;
     }
 
-    public String getPrecisionsLess25Percent(int idVisit){
-        for(PractitionerKnowingProduct pkp : allPractitionerKnowingProduct){
-            if(pkp.idVisit == idVisit)
-                return pkp.precisionsLess25Percent;
-        }
-        return "Less25PercentNoSuchId";
+    public String getPresc25() {
+        return presc25;
     }
 
-    public String getPrecisionsMore75Percent(int idVisit){
-        for(PractitionerKnowingProduct pkp : allPractitionerKnowingProduct){
-            if(pkp.idVisit == idVisit)
-                return pkp.precisionsMore75Percent;
-        }
-        return "More75PercentNoSuchId";
+    public String getPresc75() {
+        return presc75;
     }
 
-    public Object[] getInstructionsOpinion(int idVisit){
-        Object[] found = new Object[2];
-        int[] idsInstructions = new int[1];
-        idsInstructions[0] = -1;
-        found[0] = idsInstructions;
-        found[1] = "";
-        for(PractitionerKnowingProduct pkp : allPractitionerKnowingProduct){
-            if(pkp.idVisit == idVisit){
-                found[0] = pkp.instructions;
-                found[1] = instructionsComment;
-            }
-        }
-        return found;
+    public int[] getInstructions() {
+        return instructions;
     }
 
-    public String getProductComment(int idVisit){
+    public String getInstructionsComment() {
+        return instructionsComment;
+    }
+
+    public String getProductComment() {
+        return productComment;
+    }
+
+    public PractitionerKnowingProduct getPractitionerKnowingProduct(int idPractitioner, int idProduct){
         for(PractitionerKnowingProduct pkp : allPractitionerKnowingProduct){
-            if(pkp.idVisit == idVisit)
-                return pkp.productComment;
+            if(pkp.idPractitioner == this.idPractitioner && pkp.idProduct == this.idProduct)
+                return pkp;
         }
-        return "ProductCommentNoSuchId";
+        return null;
     }
 }
