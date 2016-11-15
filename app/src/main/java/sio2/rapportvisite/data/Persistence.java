@@ -15,12 +15,12 @@ public final class Persistence{
     private Persistence(){}
 
     private static Connection openConnection() throws Exception {
-        String dbIp = "";
-        String dbName = "";
-        String dbUser = "";
-        String dbPassword = "";
+        String dbIp = "192.168.222.72";
+        String dbName = "gsbjm";
+        String dbUser = "JeanMedicament";
+        String dbPassword = "zouzou";
 
-        Connection cn = null;
+        Connection cn;
         try{
             //METHODE DE JAVA JDBC : A ADAPTER
             cn = DriverManager.getConnection("jdbc:sqlserver://" + dbIp + ";database=" + dbName + ";user=" + dbUser + ";password=" + dbPassword);
