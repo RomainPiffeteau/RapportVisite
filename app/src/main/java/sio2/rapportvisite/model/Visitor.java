@@ -7,28 +7,29 @@ public class Visitor {
     private String name;
     private String firstName;
 
-    public static ArrayList<Visitor> allVisitors = new ArrayList<>();
+    public static ArrayList<Visitor> allVisitors;
+    public static void reset(){ allVisitors = new ArrayList<>(); }
 
-    public Visitor(int id, String name, String firstName){
+    public Visitor(int id, String name, String firstName) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
         allVisitors.add(this);
     }
 
-    public String getNameFromId(int id){
-        for(Visitor vis : allVisitors){
-            if(vis.id==id)
-                return vis.name;
-        }
-        return "NameNoSuchId";
+    public String getName() {
+        return name;
     }
 
-    public String getFirstNameFromId(int id){
-        for(Visitor vis : allVisitors){
-            if(vis.id==id)
-                return vis.firstName;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Visitor getVisitor(int id){
+        for(Visitor v : allVisitors){
+            if(v.id == id)
+                return v;
         }
-        return "FirstNameNoSuchId";
+        return null;
     }
 }
