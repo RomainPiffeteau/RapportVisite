@@ -4,6 +4,10 @@ android {
     compileSdkVersion 23
     buildToolsVersion "25.0.0"
 
+    repositories {
+        maven { url 'http://repo1.maven.org/maven2' }
+    }
+
     defaultConfig {
         applicationId "sio2.rapportvisite"
         minSdkVersion 16
