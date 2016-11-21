@@ -80,16 +80,33 @@ public final class Persistence{
         try{
             stmt = cn.createStatement();
             if(sector.equals("")){
-                stmt.executeUpdate("UPDATE practitioner SET sector = "+sector+"WHERE id ="+id);
+                stmt.executeUpdate("UPDATE practitioner SET sector = "+sector+" WHERE id ="+id);
             }
             if(activity.equals("")){
-                stmt.executeUpdate("UPDATE practitioner SET activity = "+activity+"WHERE id = "+id);
+                stmt.executeUpdate("UPDATE practitioner SET activity = "+activity+" WHERE id = "+id);
             }
             if(activityPrecisions.equals("")) {
-                stmt.executeUpdate("UPDATE practitioner SET activityPrecisions = " + activityPrecisions + "WHERE id = " + id);
+                stmt.executeUpdate("UPDATE practitioner SET activityPrecisions = " + activityPrecisions + " WHERE id = " + id);
             }
         }
         catch (SQLException e){
+            throw e;
+        }
+        finally {
+            closeConnection(cn);
+        }
+    }
+
+    public static void updateLabo(int id, String address, String tel, String fax) throws SQLException{
+        Connection cn = openConnection();
+        Statement stmt;
+        try{
+            stmt = cn.createStatement();
+            stmt.executeUpdate("UPDATE labo SET address = "+address+" WHERE id = " +id);
+            stmt.executeUpdate("UPDATE labo SET tel = "+tel+" WHERE id = " +id);
+            stmt.executeUpdate("UPDATE labo SET fax = "+fax+" WHERE id = " +id);
+        }
+        catch (SQLException e) {
             throw e;
         }
         finally {
@@ -128,9 +145,36 @@ public final class Persistence{
 
     }
 
-    public static void update
 
-   /* public static void updateKnowing(int idPractitioner, int idProduct,remplace le bit de SQL int knowing,)*/
+
+   public static void updateKnowing(int idPractitioner, int idProduct,/*remplace le bit de SQL*/ int knowing, int presc,
+                                    String presc25, String presc75, String instructions, String instructComment, String productComment) throws SQLException {
+       Connection cn = openConnection();
+       Statement stmt;
+       try {
+           if(knowing == 1 /*1 correspondant à connaître le produit*/) {
+               stmt = cn.createStatement();
+               stmt.executeUpdate("UPDATE knowing SET presc =  " + presc + " WHERE idPractitioner = " + idPractitioner + " AND idProduct = " + idProduct);
+               if (presc == 0 || presc == 25) {
+                   stmt.executeUpdate("UPDATE knowing SET presc25 =  " + presc25 + " WHERE idPractitioner = " + idPractitioner + " AND idProduct = " + idProduct);
+               }
+               if (presc == 75 || presc == 100) {
+                   stmt.executeUpdate("UPDATE knowing SET presc75 =  " + presc75 + " WHERE idPractitioner = " + idPractitioner + " AND idProduct = " + idProduct);
+               }
+               // Voir pour les instructions (tableau de int)
+               stmt.executeUpdate("UPDATE knowing instructComment = " + instructComment + " WHERE idPractitioner = " + idPractitioner + " AND idProduct = " + idProduct);
+               stmt.executeUpdate("UPDATE knowing productComment = " + productComment + " WHERE idPractitioner = " + idPractitioner + " AND idProduct = " + idProduct);
+           }
+
+       }
+       catch (SQLException e){
+           throw e;
+   }
+       finally {
+           closeConnection(cn);
+       }
+
+   }
 
 
 
