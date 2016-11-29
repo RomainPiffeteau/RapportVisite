@@ -17,17 +17,17 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/*
         appInfos = (TextView) findViewById(R.id.txtAppInfos);
 
         //Registering listening buttons
         Button btnFillForm = (Button) findViewById(R.id.btnFillForm);
         btnFillForm.setOnClickListener(clickListener);
         Button btnSeeForms = (Button) findViewById(R.id.btnSeeForms);
-        btnSeeForms.setOnClickListener(clickListener);
+        btnSeeForms.setOnClickListener(clickListener);*/
     }
 
-    private View.OnClickListener clickListener = new View.OnClickListener() {
+    /*private View.OnClickListener clickListener = new View.OnClickListener() {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnFillForm:
@@ -36,7 +36,7 @@ public class Main extends AppCompatActivity {
                     break;
             }
         }
-    };
+    };*/
 
     public static void setAppInfos(String str){
         appInfos.setText(str);

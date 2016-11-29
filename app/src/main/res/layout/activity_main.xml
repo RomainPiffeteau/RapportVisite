@@ -5,13 +5,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="sio2.rapportvisite.MainActivity">
+    tools:context="sio2.rapportvisite.Main">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Connexion"
-        android:id="@+id/textView"
+        android:id="@+id/numForms"
         android:layout_marginTop="119dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -22,7 +22,7 @@
         android:text="Login"
         android:id="@+id/textView2"
         android:layout_marginTop="75dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/numForms"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
