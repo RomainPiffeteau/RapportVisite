@@ -1,14 +1,11 @@
 package sio2.rapportvisite;
 import android.os.Bundle;
-import android.widget.Adapter;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
-import sio2.rapportvisite.data.Persistence;
 import sio2.rapportvisite.model.Visit;
 import sio2.rapportvisite.model.listForm;
 
@@ -20,7 +17,13 @@ public class SeeForms extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         //application du layout à l'activity
-        setContentView(R.layout.activity_vue_formulaires);
+        setContentView(R.layout.activity_view_forms);
+        Visit uneVisite= new Visit(1,1," "," "," ");
+        uneVisite= new Visit(1,1," "," "," ");
+        uneVisite= new Visit(1,1," "," "," ");
+        uneVisite= new Visit(1,1," "," "," ");
+        uneVisite= new Visit(1,1," "," "," ");
+        uneVisite= new Visit(1,1," "," "," ");
         try {
             //récupération du contenu de l'importation
             listForm fullList = new listForm();

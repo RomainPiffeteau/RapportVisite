@@ -29,16 +29,16 @@ public class Main extends AppCompatActivity {
 
 
         dbConnectEstablished = false;
-        setAppInfos("Loading Database...");
         try {
-            Persistence.refreshDB();
-        } catch (SQLException e) {
+            //Persistence.refreshDB();
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(),
                     "Can't connect to database!",
                     Toast.LENGTH_SHORT).show();
         }
 
         appInfos = (TextView) findViewById(R.id.txtAppInfos);
+        setAppInfos("Loading Database...");
 
         //Registering listening buttons
         Button btnFillForm = (Button) findViewById(R.id.btnCreateForm);
