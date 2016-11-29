@@ -26,6 +26,8 @@ public class Visit {
         return idPractitioner;
     }
 
+    public int getIdVisitor() { return  idVisitor;}
+
     public String getDate() {
         return date;
     }
@@ -48,5 +50,9 @@ public class Visit {
                 return v;
         }
         return null;
+    }
+
+    public ArrayList<Visit> getAllVisits(){
+        return allVisits;
     }
 }

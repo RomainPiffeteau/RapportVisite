@@ -27,19 +27,28 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         appInfos = (TextView) findViewById(R.id.txtAppInfos);
+=======
+
+
+>>>>>>> 2ce97264084f81ec914b23af971bab950d42917f
         dbConnectEstablished = false;
-        setAppInfos("Loading Database...");
         try {
-            Persistence.refreshDB();
-        } catch (SQLException e) {
+            //Persistence.refreshDB();
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(),
                     "Can't connect to database!",
                     Toast.LENGTH_SHORT).show();
         }
 
+<<<<<<< HEAD
 
         Log.i("debug","ligne1"+appInfos.getText().toString());
+=======
+        appInfos = (TextView) findViewById(R.id.txtAppInfos);
+        setAppInfos("Loading Database...");
+>>>>>>> 2ce97264084f81ec914b23af971bab950d42917f
 
         //Registering listening buttons
         Button btnFillForm = (Button) findViewById(R.id.btnCreateForm);
@@ -53,7 +62,11 @@ public class Main extends AppCompatActivity {
     private View.OnClickListener clickListener = new View.OnClickListener() {
         public void onClick(View v) {
             switch (v.getId()) {
+<<<<<<< HEAD
                /* case R.id.btnCreateForm:
+=======
+                /*case R.id.btnCreateForm:
+>>>>>>> 2ce97264084f81ec914b23af971bab950d42917f
                     if(!dbConnectEstablished){
                         dbConnectionError();
                     }
@@ -61,14 +74,14 @@ public class Main extends AppCompatActivity {
                         Intent createForm = new Intent(getApplicationContext(),CreateForm.class);
                         startActivity(createForm);
                     }
-                    break;
+                    break;*/
                 case R.id.btnSeeForms:
+                    Intent seeForms = new Intent(getApplicationContext(),SeeForms.class);
+                    startActivity(seeForms);
                     if(!dbConnectEstablished){
                         dbConnectionError();
                     }
                     if(dbConnectEstablished){
-                        Intent seeForms = new Intent(getApplicationContext(),SeeForms.class);
-                        startActivity(seeForms);
                     }
                     break;*/
                 case R.id.btnRefreshDb:
