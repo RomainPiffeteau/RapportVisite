@@ -2,7 +2,9 @@ package sio2.rapportvisite.model;
 
 import java.util.ArrayList;
 
+
 public class PractitionerKnowingProduct {
+
     private int idPractitioner;
     private int idProduct;
     private boolean knowing;
