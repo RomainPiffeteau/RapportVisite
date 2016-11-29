@@ -5,64 +5,75 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="sio2.rapportvisite.MainActivity">
+    tools:context="sio2.rapportvisite.Main">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connexion"
-        android:id="@+id/textView"
-        android:layout_marginTop="119dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Welcome to VisitRapport App"
+        android:id="@+id/txtWelcome"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/textView2"
-        android:layout_marginTop="75dp"
-        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:id="@+id/textView3"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/log"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/log"
-        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3" />
+        android:textSize="17dp"
+        android:textAlignment="center"
+        android:singleLine="false"
+        android:minLines="1"
+        android:maxLines="2" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pwd"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignRight="@+id/log"
-        android:layout_alignEnd="@+id/log"
-        android:layout_alignLeft="@+id/log"
-        android:layout_alignStart="@+id/log" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Loading App..."
+        android:id="@+id/txtAppInfos"
+        android:textSize="17dp"
+        android:layout_below="@+id/txtWelcome"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/txtWelcome"
+        android:layout_alignEnd="@+id/txtWelcome"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONNEXION"
-        android:id="@+id/btnCnx"
-        android:layout_marginTop="53dp"
-        android:layout_below="@+id/pwd"
-        android:layout_centerHorizontal="true" />
+        android:text="create a form"
+        android:id="@+id/btnCreateForm"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/txtAppInfos"
+        android:layout_alignEnd="@+id/txtAppInfos" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="see all filled forms"
+        android:id="@+id/btnSeeForms"
+        android:layout_below="@+id/btnCreateForm"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRefreshDb"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@mipmap/refresh"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="245dp"
+        android:layout_marginStart="245dp"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/btnSeeForms" />
 
 </RelativeLayout>
