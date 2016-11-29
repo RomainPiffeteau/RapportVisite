@@ -1,13 +1,16 @@
 package sio2.rapportvisite.data;
 
 import android.util.Log;
+import android.widget.EditText;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import sio2.rapportvisite.Main;
+import sio2.rapportvisite.R;
 
 public final class Persistence{
 
@@ -17,19 +20,36 @@ public final class Persistence{
     private Persistence(){}
 
     private static Connection openConnection() throws SQLException {
-        String dbIp = "192.168.222.72";
+     /*   String dbIp = "192.168.222.72";
         String dbName = "gsbjm";
         String dbUser = "JeanMedicament";
         String dbPassword = "zouzou";
 
         Connection cn;
         try{
+
             //METHODE DE JAVA JDBC : A ADAPTER
-            cn = DriverManager.getConnection("jdbc:sqlserver://" + dbIp + ";database=" + dbName + ";user=" + dbUser + ";password=" + dbPassword);
+            cn = DriverManager.getConnection("jdbc:jtds:sqlserver://" + dbIp + ";database=" + dbName + ";user=" + dbUser + ";password=" + dbPassword);
         } catch (Exception e){
+            Log.i("test",e.getMessage());
             throw e;
         }
-        return cn;
+        return cn;*/
+
+        Connection DbConn = null;
+        try{
+            Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
+         //   Log.i("test", "connection source forge success");
+            String username = "JeanMedicament";
+            String password = "zouzou";
+            DbConn = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.222.72;databasename=gsbjm;user=" + username + ";password=" + password);
+            Statement stmt= DbConn.createStatement();
+
+        } catch (Exception e)
+        {
+            Log.i("test", e.getMessage());
+        }
+        return DbConn;
     }
 
     private static void closeConnection(Connection cn) throws SQLException{
@@ -47,11 +67,11 @@ public final class Persistence{
             closeConnection(cn);
             Main.setAppInfos("Base locale rafraîchie");
             Log.i("debug_dev", "Refresh DB OK");
-            dbConnectEtablished = true;
+            Main.dbConnectEstablished = true;
         }catch(Exception e){
             Main.setAppInfosError(e.getMessage());
             Log.i("debug_dev", "Refresh DB Fail");
-            dbConnectEtablished = false;
+            Main.dbConnectEstablished = false;
         }
     }
 

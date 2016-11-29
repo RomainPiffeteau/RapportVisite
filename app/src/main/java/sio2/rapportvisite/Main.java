@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,6 +27,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        appInfos = (TextView) findViewById(R.id.txtAppInfos);
         dbConnectEstablished = false;
         setAppInfos("Loading Database...");
         try {
@@ -36,7 +38,8 @@ public class Main extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
 
-        appInfos = (TextView) findViewById(R.id.txtAppInfos);
+
+        Log.i("debug","ligne1"+appInfos.getText().toString());
 
         //Registering listening buttons
         Button btnFillForm = (Button) findViewById(R.id.btnCreateForm);
@@ -50,7 +53,7 @@ public class Main extends AppCompatActivity {
     private View.OnClickListener clickListener = new View.OnClickListener() {
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.btnCreateForm:
+               /* case R.id.btnCreateForm:
                     if(!dbConnectEstablished){
                         dbConnectionError();
                     }
@@ -67,7 +70,7 @@ public class Main extends AppCompatActivity {
                         Intent seeForms = new Intent(getApplicationContext(),SeeForms.class);
                         startActivity(seeForms);
                     }
-                    break;
+                    break;*/
                 case R.id.btnRefreshDb:
                     try {
                         Persistence.refreshDB();
