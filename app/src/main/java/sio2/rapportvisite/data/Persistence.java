@@ -47,9 +47,11 @@ public final class Persistence{
             closeConnection(cn);
             Main.setAppInfos("Base locale rafraîchie");
             Log.i("debug_dev", "Refresh DB OK");
+            dbConnectEtablished = true;
         }catch(Exception e){
             Main.setAppInfosError(e.getMessage());
             Log.i("debug_dev", "Refresh DB Fail");
+            dbConnectEtablished = false;
         }
     }
 
