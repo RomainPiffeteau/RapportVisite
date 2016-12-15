@@ -1,0 +1,3 @@
+android studio version 1.4
+android sdk version 4.0.4 (version des appareils du lycée pour l'exam)
+format 720p de large
